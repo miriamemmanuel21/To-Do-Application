@@ -5,6 +5,7 @@ import com.semicolon.ToDoApplication.Service.ToDoServiceImpl;
 import com.semicolon.ToDoApplication.Entity.ToDo;
 import com.semicolon.ToDoApplication.dtos.ToDodto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,10 +33,13 @@ public class ToDoController {
         return toDoService.addNewToDo(toDo);
     }
 
-    @DeleteMapping( "/{toDoId}")
+    @DeleteMapping("/{toDoId}")
     public String deleteToDo(@PathVariable Long toDoId) {
         return toDoService.deleteToDo(toDoId);
     }
-
+    @PutMapping("/{id}")
+    public ResponseEntity<ToDo> updateTodoFields(@PathVariable Long id, @RequestBody ToDodto updatedTodoDto) {
+        ToDo updated = toDoService.updateToDo(id, updatedTodoDto);
+        return ResponseEntity.ok(updated);
     }
-
+}

@@ -13,5 +13,6 @@ public interface ToDoService {
     String deleteToDo(Long toDoid);
 
 
+    ToDo updateToDo(Long toDoid, ToDodto Status);
 }
 

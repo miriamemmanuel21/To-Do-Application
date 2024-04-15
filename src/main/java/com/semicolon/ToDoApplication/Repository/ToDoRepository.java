@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ToDoRepository extends JpaRepository<ToDo, Long> {
     @Query ("SELECT s FROM ToDo s WHERE s.taskName = ?1")
     Optional<ToDo> findToDoByTaskName(String taskName);
+
 }
